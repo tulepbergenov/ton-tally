@@ -2,7 +2,7 @@
   "name": "ton-tally",
   "version": "0.0.1",
   "scripts": {
-    "deploy": "blueprint run",
+    "contract": "blueprint run",
     "build": "blueprint build",
     "test": "jest --verbose"
   },

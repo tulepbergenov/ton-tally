@@ -5,18 +5,9 @@ import { NetworkProvider } from '@ton/blueprint';
 export async function run(provider: NetworkProvider) {
   const tallyContract = provider.open(await TallyContract.fromInit(513327n));
 
-  await tallyContract.send(
-    provider.sender(),
-    {
-      value: toNano('0.05'),
-    },
-    {
-      $$type: 'Deploy',
-      queryId: 0n,
-    },
-  );
+  const counter = await tallyContract.getCounter();
 
-  await provider.waitForDeploy(tallyContract.address);
+  const id = await tallyContract.getId();
 
-  // run methods on `tallyContract`
+  console.log(`Counter: ${counter}; Id - ${id}`);
 }

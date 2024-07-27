@@ -7,16 +7,10 @@ export async function run(provider: NetworkProvider) {
 
   await tallyContract.send(
     provider.sender(),
+    { value: toNano('0.02') },
     {
-      value: toNano('0.05'),
-    },
-    {
-      $$type: 'Deploy',
-      queryId: 0n,
+      $$type: 'Add',
+      amount: 5n,
     },
   );
-
-  await provider.waitForDeploy(tallyContract.address);
-
-  // run methods on `tallyContract`
 }
