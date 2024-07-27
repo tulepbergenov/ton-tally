@@ -3,7 +3,7 @@ import { TallyContract } from '../wrappers/TallyContract';
 import { NetworkProvider } from '@ton/blueprint';
 
 export async function run(provider: NetworkProvider) {
-  const tallyContract = provider.open(await TallyContract.fromInit());
+  const tallyContract = provider.open(await TallyContract.fromInit(51337n));
 
   await tallyContract.send(
     provider.sender(),
